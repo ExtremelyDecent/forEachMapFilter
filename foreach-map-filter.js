@@ -7,7 +7,12 @@ Examples:
 
 */
 function doubleValues(arr){
-    
+
+    const dblArr = [];
+    arr.forEach(function(num, i, array){
+        dblArr.push (array[i] * 2);
+    });
+    return dblArr;
 }
 
 /*
@@ -20,6 +25,11 @@ Examples:
 */
 function onlyEvenValues(arr){
     
+    let evenArr = arr.filter(function(num, i, array){
+        return num % 2 === 0;
+
+    });
+    return evenArr;
 }
 
 /*
@@ -31,6 +41,12 @@ Examples:
 
 */
 function showFirstAndLast(arr){
+    const firstLast = [];
+
+    arr.forEach(function(str, i, arr){
+        firstLast.push(str[0]+str[str.length-1]);
+    });
+    return firstLast;
     
 }
 
@@ -44,7 +60,11 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    arr.forEach(function(add){
+        add[key] = value;
+    });
+    return arr;
+
 }
 
 /*
@@ -58,6 +78,20 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
+    const vowels = 'aeiou';
+    const noSpace = str.split('');
+    let vowelAmount = {}; 
+    noSpace.forEach(function(char){
+        if (vowels.indexOf(char.toLowerCase()) !== -1){
+            if(vowelAmount[char.toLowerCase()]){
+                vowelAmount[char.toLowerCase()] ++;
+            }
+            else{
+                vowelAmount[char.toLowerCase()] = 1;
+            }
+        }
+    });
+    return vowelAmount;
    
 }
 
@@ -69,7 +103,12 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    arr.map(function(num, i, array){
+        return num  *2;
+    });
+    return arr;
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
